@@ -1,13 +1,22 @@
+import { AuthService } from './../services/auth.services';
 import { Component, OnInit} from '@angular/core';
 
 @Component({
 
+
+    // tslint:disable-next-line:component-selector
     selector: 'login',
     templateUrl: 'login.component.html'
 })
 
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
-    ngOnInit(){}
+    constructor(private auth: AuthService) {}
+
+    ngOnInit() {}
+
+    login() {
+        this.auth.login().then(console.log);
+    }
 
 }
