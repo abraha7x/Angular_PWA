@@ -2,11 +2,22 @@
 
 @import './styles/default.css';
 @import './styles/colors.css';
-
-.large-padding{
+.large-padding {
     padding: 10px 15px;
 }
 
-.main-nav a{
+.float-right {
+    float: right;
+}
+
+.main-nav .float-right a {
+    margin-left: 1em;
+}
+
+.small-font {
+    font-size: 0.8rem;
+}
+
+.main-nav a {
     text-decoration: none;
 }

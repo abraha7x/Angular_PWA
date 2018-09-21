@@ -31,12 +31,14 @@
   "pre-commit": [],
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.0.0",
+    "@angular/animations": "^6.1.8",
+    "@angular/cdk": "^6.4.7",
     "@angular/common": "^6.0.0",
     "@angular/compiler": "^6.0.0",
     "@angular/core": "^6.0.0",
     "@angular/forms": "^6.0.0",
     "@angular/http": "^6.0.0",
+    "@angular/material": "^6.4.7",
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/platform-server": "^6.0.0",
@@ -48,6 +50,7 @@
     "angularfire2": "^5.0.1",
     "core-js": "^2.4.1",
     "firebase": "^5.5.0",
+    "font-awesome": "^4.7.0",
     "rxjs": "^6.3.2",
     "rxjs-compat": "^6.3.2",
     "zone.js": "^0.8.26"
