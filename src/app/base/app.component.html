@@ -5,17 +5,17 @@
 <nav class="main-nav blue large-padding light-text">
 
     <a routerLink="/">
-        <span class="nav-title">PWA</span>
+        <span class="nav-title">Progressive Web App</span>
     </a>
 
-    <div class='float-right'>
+    <div class='float-right'*ngIf="afAuth.authState | async" >
 
         <a routerLink="/">
             <i class="fa fa-list"></i>
             <span class="small-font"> Mis Listas</span>
         </a>
 
-        <a>
+        <a routerLink="#" (click)="logout()">
             <i class="fa fa-sign-out-alt"></i>
         </a>
 
