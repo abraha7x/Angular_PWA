@@ -4,6 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
+
 // Conguracion de modulos.
 import {environment} from '../environments/environment';
 import {routes} from './routes';
@@ -19,6 +20,7 @@ import {AuthService} from './services/auth.services';
 import {UserService} from './services/users.service';
 
 import {TransferHttpCacheModule} from '@nguniversal/common';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import {TransferHttpCacheModule} from '@nguniversal/common';
     TransferHttpCacheModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AuthService, AuthGuard, UserService],
   bootstrap: [AppComponent]
