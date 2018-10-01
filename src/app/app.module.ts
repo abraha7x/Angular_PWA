@@ -1,3 +1,4 @@
+import { PushNotificationsService } from './services/push-notifications.service';
 import { AuthGuard } from './guards/auth.guard.service';
 
 import {BrowserModule} from '@angular/platform-browser';
@@ -18,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import {AuthService} from './services/auth.services';
 import {UserService} from './services/users.service';
 
+
 import {TransferHttpCacheModule} from '@nguniversal/common';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -36,7 +38,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AngularFirestoreModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [AuthService, AuthGuard, UserService],
+  providers: [AuthService, AuthGuard, UserService, PushNotificationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

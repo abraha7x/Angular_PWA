@@ -1,8 +1,10 @@
+import { PushNotificationsService } from './../services/push-notifications.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 
 import * as firebase from 'firebase';
+
 
 @Component({
   selector: 'app-root',
@@ -12,13 +14,19 @@ import * as firebase from 'firebase';
 export class AppComponent {
 
   // tslint:disable-next-line:no-inferrable-types
-  public token: boolean = true;
+  public token: boolean = false;
 
-  constructor(public afAuth: AngularFireAuth, private router: Router) {}
+  constructor(public afAuth: AngularFireAuth, private router: Router, public PushS: PushNotificationsService) {}
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit () {
   }
+
+  requestPushPermission() {
+    this.PushS.requestPermission();
+  }
+
+  rejectPushPermissions() {}
 
   logout() {
     this.afAuth.auth.signOut().then(() => {
