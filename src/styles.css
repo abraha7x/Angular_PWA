@@ -21,3 +21,36 @@
 .main-nav a {
     text-decoration: none;
 }
+
+.relative {
+    position: relative;
+}
+
+.small-padding {
+    padding: 8px;
+}
+
+.card {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.notification-window {
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    width: 300px;
+    font-size: 0.7em;
+    z-index: 100;
+    background-color: greenyellow;
+}
+
+p {
+    color: black;
+}
+
+body {
+    background-color: brown;
+}

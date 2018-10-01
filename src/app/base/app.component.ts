@@ -11,6 +11,9 @@ import * as firebase from 'firebase';
 })
 export class AppComponent {
 
+  // tslint:disable-next-line:no-inferrable-types
+  public token: boolean = true;
+
   constructor(public afAuth: AngularFireAuth, private router: Router) {}
 
   // tslint:disable-next-line:use-life-cycle-interface

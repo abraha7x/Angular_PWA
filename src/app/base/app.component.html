@@ -2,11 +2,24 @@
 
 
 
-<nav class="main-nav blue large-padding light-text">
+<nav class="main-nav blue large-padding light-text relative">
 
     <a routerLink="/">
         <span class="nav-title">Progressive Web App</span>
     </a>
+
+    <div class="notification-window card small-padding">
+        <div *ngIf="token; else activate_notifications">
+            <p>Te gustaria desactivar notificaciones</p>
+            <button type="button" name="button" class="blue light-text small-padding card">Desactivar</button>
+        </div>
+
+        <ng-template #activate_notifications>
+            <p>Te gustaria activar notificaciones</p>
+            <button type="button" name="button" class="blue light-text small-padding card">Activar</button>
+        </ng-template>
+
+    </div>
 
     <div class='float-right' *ngIf="afAuth.authState | async">
 
