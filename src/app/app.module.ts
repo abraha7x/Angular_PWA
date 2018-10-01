@@ -4,7 +4,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
-
 // Conguracion de modulos.
 import {environment} from '../environments/environment';
 import {routes} from './routes';

@@ -2,6 +2,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 
+import * as firebase from 'firebase';
+
 @Component({
   selector: 'app-root',
   templateUrl: `app.component.html`,
@@ -11,12 +13,15 @@ export class AppComponent {
 
   constructor(public afAuth: AngularFireAuth, private router: Router) {}
 
-  logout() {
-    this.afAuth.auth.signOut().then(() => {
-
-
-    });
-this.router.navigate(['/login']);
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnInit () {
+    const messaging = firebase.messaging();
+    messaging.requestPermission().then(console.log);
   }
 
+  logout() {
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['/login']);
+    });
+  }
 }
