@@ -23,7 +23,7 @@ export class AppComponent {
   }
 
   requestPushPermission() {
-    this.PushS.requestPermission();
+    this.PushS.requestPermission().then(console.log);
   }
 
   rejectPushPermissions() {}

@@ -8,8 +8,10 @@ export class PushNotificationsService {
 
     public messaging = firebase.messaging();
 
-    requestPermission(): Promise<void> {
-        return this.messaging.requestPermission();
+    requestPermission(): Promise<string> {
+        return this.messaging.requestPermission().then(() => {
+            return this.messaging.getToken();
+        });
     }
 
 }
