@@ -20,6 +20,7 @@ export class AppComponent {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit () {
+    this.PushS.getSuscription().then(console.log);
   }
 
   requestPushPermission() {
