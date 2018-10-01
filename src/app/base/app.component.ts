@@ -15,8 +15,6 @@ export class AppComponent {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit () {
-    const messaging = firebase.messaging();
-    messaging.requestPermission().then(console.log);
   }
 
   logout() {
