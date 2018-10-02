@@ -8,6 +8,10 @@ export class PushNotificationsService {
 
     public messaging = firebase.messaging();
 
+    constructor() {
+        this.messaging.getToken().then(console.log);
+    }
+
     getSubscription(): Promise<any> {
         if (!navigator) { return; }
 

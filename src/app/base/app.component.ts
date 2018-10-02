@@ -15,6 +15,8 @@ export class AppComponent {
 
   // tslint:disable-next-line:no-inferrable-types
   public token: any;
+  // tslint:disable-next-line:no-inferrable-types
+  public showPanel: boolean = false;
 
   constructor(public afAuth: AngularFireAuth, private router: Router, public PushS: PushNotificationsService) {}
 
@@ -28,10 +30,16 @@ export class AppComponent {
 
   requestPushPermission() {
     this.PushS.requestPermission().then(() => this.setToken());
+    this.toggleNotificationsWindow();
   }
 
   cancelPermission() {
     this.PushS.cancelPermission().then(() => this.setToken());
+    this.toggleNotificationsWindow();
+  }
+
+  toggleNotificationsWindow() {
+    this.showPanel = !this.showPanel;
   }
 
   rejectPushPermissions() {}

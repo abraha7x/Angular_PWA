@@ -47,6 +47,14 @@
     background-color: white;
 }
 
+.red-text {
+    color: #490A04;
+}
+
+button.card:active {
+    opacity: 0.8;
+}
+
 p {
     color: black;
 }
