@@ -1,6 +1,11 @@
+import { Observable } from 'rxjs-compat/Rx';
 import { Injectable } from '@angular/core';
 
 import * as firebase from 'firebase';
+
+
+import {Subject} from 'rxjs-compat/Subject';
+
 
 @Injectable()
 
@@ -8,9 +13,22 @@ export class PushNotificationsService {
 
     public messaging = firebase.messaging();
 
+    public sub: Subject <any> = new Subject();
+
+    public notification: Observable<any> = this.sub.asObservable();
+
     constructor() {
-        this.messaging.getToken().then(console.log);
     }
+
+    watchMessages() {
+        this.messaging.onMessage((notification) => {
+            console.log(notification);
+            this.sub.next(notification);
+        // tslint:disable-next-line:semicolon
+        })
+    }
+
+
 
     getSubscription(): Promise<any> {
         if (!navigator) { return; }

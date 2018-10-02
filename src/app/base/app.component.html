@@ -23,7 +23,7 @@
 
     <div class='float-right' *ngIf="afAuth.authState | async">
         <a (click)="toggleNotificationsWindow()">
-            <i class="fa" [ngClass]="{'fa-bell red-text': !!(token | async), 'fa-bell': !(token | async)}"></i>
+            <i class="fa" [ngClass]="{'fa-bell red-text': !!(token | async), 'fa-bell-o': !(token | async)}"></i>
         </a>
 
         <a routerLink="/">
@@ -40,3 +40,8 @@
 </nav>
 
 <router-outlet></router-outlet>
+
+<div class="push-message" [ngClass]="{'visible': !!(PushS.notification | async)}">
+    {{ (PushS.notification | async)?.notification.body }}
+
+</div>

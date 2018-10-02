@@ -22,20 +22,23 @@ export class AppComponent {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit () {
-  }
-
-  setToken() {
     this.token = this.PushS.getSubscription();
+    this.PushS.watchMessages();
   }
 
   requestPushPermission() {
-    this.PushS.requestPermission().then(() => this.setToken());
-    this.toggleNotificationsWindow();
+    this.PushS.requestPermission().then(() => {
+      this.token = this.PushS.getSubscription();
+      this.toggleNotificationsWindow();
+    });
+
   }
 
   cancelPermission() {
-    this.PushS.cancelPermission().then(() => this.setToken());
-    this.toggleNotificationsWindow();
+    this.PushS.cancelPermission().then(() => {
+      this.token = this.PushS.getSubscription();
+      this.toggleNotificationsWindow();
+    });
   }
 
   toggleNotificationsWindow() {
