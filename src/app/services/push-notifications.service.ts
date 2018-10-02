@@ -1,3 +1,4 @@
+import { UserService } from './users.service';
 import { Observable } from 'rxjs-compat/Rx';
 import { Injectable } from '@angular/core';
 
@@ -5,6 +6,7 @@ import * as firebase from 'firebase';
 
 
 import {Subject} from 'rxjs-compat/Subject';
+
 
 
 @Injectable()
@@ -17,7 +19,7 @@ export class PushNotificationsService {
 
     public notification: Observable<any> = this.sub.asObservable();
 
-    constructor() {
+    constructor(private uS: UserService) {
     }
 
     watchMessages() {
@@ -65,6 +67,8 @@ export class PushNotificationsService {
     requestPermission(): Promise<string> {
         return this.messaging.requestPermission().then(() => {
             return this.messaging.getToken();
+        }).then(token => {
+            return this.uS.addToken(token);
         });
     }
 
