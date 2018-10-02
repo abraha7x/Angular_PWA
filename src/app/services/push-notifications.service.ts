@@ -8,7 +8,7 @@ export class PushNotificationsService {
 
     public messaging = firebase.messaging();
 
-    getSuscription(): Promise<any> {
+    getSubscription(): Promise<any> {
         if (!navigator) { return; }
 
         return navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -24,6 +24,20 @@ export class PushNotificationsService {
 
             return firebaseSWs[0].pushManager.getSubscription();
         });
+    }
+
+    cancelPermission(): Promise<any> {
+        const suscriptionPr = this.getSubscription();
+        return suscriptionPr.then((pushS: PushSubscription) => {
+            // tslint:disable-next-line:curly
+            if (!pushS) return Promise.resolve(null);
+
+            return pushS.unsubscribe();
+
+
+
+        // tslint:disable-next-line:semicolon
+        })
     }
 
     requestPermission(): Promise<string> {

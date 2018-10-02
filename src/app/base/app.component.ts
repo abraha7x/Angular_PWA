@@ -14,17 +14,24 @@ import * as firebase from 'firebase';
 export class AppComponent {
 
   // tslint:disable-next-line:no-inferrable-types
-  public token: boolean = false;
+  public token: any;
 
   constructor(public afAuth: AngularFireAuth, private router: Router, public PushS: PushNotificationsService) {}
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit () {
-    this.PushS.getSuscription().then(console.log);
+  }
+
+  setToken() {
+    this.token = this.PushS.getSubscription();
   }
 
   requestPushPermission() {
-    this.PushS.requestPermission().then(console.log);
+    this.PushS.requestPermission().then(() => this.setToken());
+  }
+
+  cancelPermission() {
+    this.PushS.cancelPermission().then(() => this.setToken());
   }
 
   rejectPushPermissions() {}
