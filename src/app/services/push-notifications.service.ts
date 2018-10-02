@@ -22,6 +22,13 @@ export class PushNotificationsService {
     constructor(private uS: UserService) {
     }
 
+    refreshToken() {
+        this.messaging.onTokenRefresh(() => {
+            this.messaging.getToken().then(token => this.uS.addToken(token));
+        // tslint:disable-next-line:semicolon
+        })
+    }
+
     watchMessages() {
         this.messaging.onMessage((notification) => {
             console.log(notification);

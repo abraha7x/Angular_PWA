@@ -24,6 +24,7 @@ export class AppComponent {
   ngOnInit () {
     this.token = this.PushS.getSubscription();
     this.PushS.watchMessages();
+    this.PushS.refreshToken();
   }
 
   requestPushPermission() {
